@@ -4,19 +4,21 @@ import { Button, Reveal } from '../components/ui';
 import { MapCanvas } from '../components/MapCanvas';
 import { Donut } from '../components/charts';
 import { ArrowRightIcon, LogoMark, QuoteIcon, SparkIcon } from '../components/icons';
+import { useI18n } from '../i18n/translations';
 
 /* ---------------- mini product mocks ---------------- */
 
 function MiniItinerary() {
+  const { t } = useI18n();
   const rows = [
-    { t: '09:00', label: 'Sant\u2019Eustachio espresso', c: '#8F6A45' },
-    { t: '10:30', label: 'Colosseum — skip the line', c: '#E8A33D' },
-    { t: '13:30', label: 'Lunch in Trastevere', c: '#E4572E' },
-    { t: '15:30', label: 'Roman Forum at golden hour', c: '#E8A33D' },
+    { t: '09:00', label: t('landing.demo.espresso'), c: '#8F6A45' },
+    { t: '10:30', label: t('landing.demo.colosseum'), c: '#E8A33D' },
+    { t: '13:30', label: t('landing.demo.lunch'), c: '#E4572E' },
+    { t: '15:30', label: t('landing.demo.forum'), c: '#E8A33D' },
   ];
   return (
     <div className="rounded-xl border border-line bg-bone p-4 shadow-lift">
-      <p className="mb-3 font-mono text-[9.5px] font-bold tracking-[0.2em] text-fog">MON · MAY 12 — ROME</p>
+      <p className="mb-3 font-mono text-[9.5px] font-bold tracking-[0.2em] text-fog">{t('landing.demo.dateRome')}</p>
       <ul className="space-y-1">
         {rows.map((r) => (
           <li key={r.t} className="flex items-center gap-3 rounded-lg px-2 py-1.5 transition-colors hover:bg-mist/60">

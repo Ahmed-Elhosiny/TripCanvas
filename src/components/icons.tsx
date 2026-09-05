@@ -257,6 +257,13 @@ export const QuoteIcon = make(
   <path d="M5 13.5c0-4.5 2.5-7.5 6-9l.8 1.6c-2.2 1.2-3.4 2.8-3.6 4.4.4-.2.8-.3 1.3-.3 1.9 0 3.2 1.4 3.2 3.3S11.2 17 9.2 17c-2.6 0-4.2-1.4-4.2-3.5zm9 0c0-4.5 2.5-7.5 6-9l.8 1.6c-2.2 1.2-3.4 2.8-3.6 4.4.4-.2.8-.3 1.3-.3 1.9 0 3.2 1.4 3.2 3.3S20.2 17 18.2 17c-2.6 0-4.2-1.4-4.2-3.5z" fill="currentColor" stroke="none" />,
 );
 
+export const GlobeIcon = make(
+  <>
+    <circle cx="12" cy="12" r="9" />
+    <path d="M12 3v18M3 12h18M5.5 5.5c2.5 2.5 3.5 6 3.5 9s-1 6.5-3.5 9M18.5 5.5c-2.5 2.5-3.5 6-3.5 9s1 6.5 3.5 9" />
+  </>,
+);
+
 /* ---------------- category mapping ---------------- */
 
 export function CategoryIcon({ category, size = 16, ...rest }: IconProps & { category: ActivityCategory }) {
