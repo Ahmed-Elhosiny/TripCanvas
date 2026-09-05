@@ -201,7 +201,7 @@ function DayRailButton({
 /* ---------------- page ---------------- */
 
 export default function Itinerary({ trip }: { trip: Trip }) {
-  const { state, moveActivity, deleteActivity, addActivity, updateActivity } = useTripStore();
+  const { state, moveActivity, deleteActivity, addActivity, updateActivity, setDayActivities } = useTripStore();
   const { push } = useToast();
   const currency = state.settings.currency;
 
@@ -262,8 +262,10 @@ export default function Itinerary({ trip }: { trip: Trip }) {
       if (oldIndex === -1 || newIndex === -1 || oldIndex === newIndex) return;
       const next = arrayMove(sorted, oldIndex, newIndex);
       const newTime = computeDropTime(next, actId);
-      const moved = next.find((a) => a.id === actId);
-      if (moved && newTime) updateActivity(trip.id, day.id, { ...moved, time: newTime });
+      /* persist both the new order and the recomputed time so the drop
+         survives even when neighbouring slots are tight */
+      const reordered = newTime ? next.map((a) => (a.id === actId ? { ...a, time: newTime } : a)) : next;
+      setDayActivities(trip.id, day.id, reordered);
     }
   };
 

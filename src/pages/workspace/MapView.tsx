@@ -45,6 +45,7 @@ export default function MapView({ trip }: { trip: Trip }) {
     }
     return day.activities
       .filter((a) => a.lat !== undefined && a.lng !== undefined)
+      .sort((a, b) => timeToMin(a.time) - timeToMin(b.time))
       .map((a, i) => ({
         id: a.id, lat: a.lat as number, lng: a.lng as number, label: a.title, color: CATEGORY_META[a.category].color, kind: 'stop', index: i + 1,
       }));

@@ -74,7 +74,7 @@ const GEO: Record<CityId, CityGeo> = {
   },
   osaka: {
     rivers: [
-      [[135.477, 35.7005], [135.477, 34.7005], [135.492, 34.697], [135.506, 34.699], [135.521, 34.694], [135.537, 34.696]],
+      [[135.477, 34.706], [135.477, 34.7005], [135.492, 34.697], [135.506, 34.699], [135.521, 34.694], [135.537, 34.696]],
       [[135.5025, 34.711], [135.5015, 34.692], [135.504, 34.672], [135.5005, 34.650], [135.502, 34.643]],
     ],
     parks: [
@@ -200,9 +200,9 @@ export function MapCanvas({ city, markers, selectedId, onSelect, route, routeKey
       role="img"
       aria-label={`Stylized map of ${cityMeta.name} with ${markers.length} pinned places`}
     >
-      {/* ground */}
-      <rect width={W} height={H} fill={geo.lagoon ? '#B9CFC6' : '#EDEADF'} />
-      <rect width={W} height={H} fill="url(#paperDots)" opacity="0.5" />
+      {/* ground (oversized so letterbox bands read as paper) */}
+      <rect x={-2000} y={-2000} width={W + 4000} height={H + 4000} fill={geo.lagoon ? '#B9CFC6' : '#EDEADF'} />
+      <rect x={-2000} y={-2000} width={W + 4000} height={H + 4000} fill="url(#paperDots)" opacity="0.5" />
       <defs>
         <pattern id="paperDots" width="22" height="22" patternUnits="userSpaceOnUse">
           <circle cx="1" cy="1" r="1" fill={geo.lagoon ? '#9DB8AE' : '#DAD7C6'} />
@@ -291,7 +291,7 @@ export function MapCanvas({ city, markers, selectedId, onSelect, route, routeKey
       {/* route */}
       {routePts && (
         <g key={routeKey}>
-          <path d={smoothPath(routePts)} fill="none" stroke="#FAF9F2" strokeWidth="7" strokeLinecap="round" opacity="0.85" />
+          <path d={smoothPath(routePts)} pathLength={1} fill="none" stroke="#FAF9F2" strokeWidth="7" strokeLinecap="round" opacity="0.85" className="route-draw" />
           <path
             d={smoothPath(routePts)}
             fill="none"

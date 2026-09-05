@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react';
-import type { Place, PlaceCategory, Trip } from '../../types';
+import type { ActivityCategory, Place, Trip } from '../../types';
 import { CITIES, CATEGORY_META } from '../../types';
 import { useToast, useTripStore } from '../../store/store';
 import { PLACES } from '../../data/places';
@@ -79,12 +79,14 @@ export default function Discover({ trip }: { trip: Trip }) {
         <span className="hidden h-5 w-px bg-line sm:block" />
         <div className="no-scrollbar flex gap-1.5 overflow-x-auto">
           <Chip active={category === 'all'} onClick={() => setCategory('all')}>Everything</Chip>
-          {(Object.keys(CATEGORY_META) as PlaceCategory[]).map((c) => (
-            <Chip key={c} active={category === c} onClick={() => setCategory(c)}>
-              <span className="h-1.5 w-1.5 rounded-full" style={{ background: CATEGORY_META[c].color }} />
-              {CATEGORY_META[c].label}
-            </Chip>
-          ))}
+          {(Object.keys(CATEGORY_META) as ActivityCategory[])
+            .filter((c) => c !== 'other')
+            .map((c) => (
+              <Chip key={c} active={category === c} onClick={() => setCategory(c)}>
+                <span className="h-1.5 w-1.5 rounded-full" style={{ background: CATEGORY_META[c].color }} />
+                {CATEGORY_META[c].label}
+              </Chip>
+            ))}
         </div>
         <span className="hidden h-5 w-px bg-line sm:block" />
         <Chip active={savedOnly} onClick={() => setSavedOnly((v) => !v)}>
