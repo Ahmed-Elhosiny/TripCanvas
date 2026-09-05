@@ -3,7 +3,9 @@ import type { ReactNode } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useToast, useTripStore } from '../store/store';
 import { Button, Dropdown, Modal } from './ui';
-import { ChevronDownIcon, DownloadIcon, GearIcon, LogoMark, XIcon } from './icons';
+import { ChevronDownIcon, DownloadIcon, GearIcon, LogoMark, XIcon, GlobeIcon } from './icons';
+import { LanguageSwitcher } from './LanguageSwitcher';
+import { useI18n } from '../i18n/translations';
 
 export function Wordmark({ dark = false }: { dark?: boolean }) {
   return (
@@ -21,6 +23,7 @@ export function AppShell({ trail, children }: { trail?: ReactNode; children: Rea
   const { state, resetAll } = useTripStore();
   const { push } = useToast();
   const navigate = useNavigate();
+  const { t } = useI18n();
   const [confirmReset, setConfirmReset] = useState(false);
   const s = state.settings;
   const initials = s.traveler.split(' ').map((w) => w[0]).slice(0, 2).join('');
@@ -33,7 +36,7 @@ export function AppShell({ trail, children }: { trail?: ReactNode; children: Rea
     a.download = 'tripcanvas-export.json';
     a.click();
     URL.revokeObjectURL(url);
-    push('success', 'Export ready', 'Your trips were downloaded as JSON.');
+    push('success', t('toasts.exportSuccess'), t('settings.exportDesc'));
   };
 
   return (
@@ -48,8 +51,9 @@ export function AppShell({ trail, children }: { trail?: ReactNode; children: Rea
             </>
           )}
           <div className="ml-auto flex items-center gap-2">
+            <LanguageSwitcher />
             <Dropdown
-              label="Account menu"
+              label={t('navigation.accountMenu')}
               align="right"
               button={
                 <button className="flex items-center gap-2 rounded-full border border-line bg-bone py-1 pl-1 pr-2.5 transition-all hover:border-ink/30 hover:shadow-pop">
@@ -59,9 +63,9 @@ export function AppShell({ trail, children }: { trail?: ReactNode; children: Rea
                 </button>
               }
               items={[
-                { label: 'Settings', icon: <GearIcon size={15} />, onClick: () => navigate('/settings') },
-                { label: 'Export data', icon: <DownloadIcon size={15} />, onClick: exportData },
-                { label: 'Reset demo data', icon: <XIcon size={15} />, danger: true, onClick: () => setConfirmReset(true) },
+                { label: t('navigation.settings'), icon: <GearIcon size={15} />, onClick: () => navigate('/settings') },
+                { label: t('navigation.exportData'), icon: <DownloadIcon size={15} />, onClick: exportData },
+                { label: t('navigation.resetDemoData'), icon: <XIcon size={15} />, danger: true, onClick: () => setConfirmReset(true) },
               ]}
             />
           </div>
@@ -72,28 +76,28 @@ export function AppShell({ trail, children }: { trail?: ReactNode; children: Rea
 
       <footer className="border-t border-line bg-mist/40">
         <div className="mx-auto flex max-w-[1320px] flex-col items-center justify-between gap-2 px-4 py-5 sm:flex-row sm:px-6">
-          <p className="font-mono text-[10.5px] font-bold tracking-[0.18em] text-fog">TRIPCANVAS — PLAN · ROUTE · REMEMBER</p>
-          <p className="font-mono text-[10.5px] tracking-[0.14em] text-fog">41.9028° N, 12.4964° E · MADE FOR WANDERERS</p>
+          <p className="font-mono text-[10.5px] font-bold tracking-[0.18em] text-fog">{t('footer.tagline')}</p>
+          <p className="font-mono text-[10.5px] tracking-[0.14em] text-fog">{t('footer.coords')}</p>
         </div>
       </footer>
 
-      <Modal open={confirmReset} onClose={() => setConfirmReset(false)} kicker="Careful" title="Reset demo data?">
+      <Modal open={confirmReset} onClose={() => setConfirmReset(false)} kicker={t('settings.careful')} title={t('settings.resetConfirm')}>
         <p className="text-[14px] leading-relaxed text-moss">
-          This discards every change you've made and restores the original Italy, Japan and Paris trips. There's no undo.
+          {t('settings.resetDesc')}
         </p>
         <div className="mt-5 flex justify-end gap-2.5">
           <Button variant="ghost" onClick={() => setConfirmReset(false)}>
-            Keep my trips
+            {t('settings.keepTrips')}
           </Button>
           <Button
             variant="primary"
             onClick={() => {
               resetAll();
               setConfirmReset(false);
-              push('success', 'Demo data restored', 'Fresh canvas, fresh journey.');
+              push('success', t('settings.dataRestored'), t('settings.freshCanvas'));
             }}
           >
-            Reset everything
+            {t('settings.resetEverything')}
           </Button>
         </div>
       </Modal>

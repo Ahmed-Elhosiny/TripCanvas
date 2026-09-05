@@ -193,6 +193,14 @@ export const translations = {
       openCanvas: 'Open the canvas',
       peekItaly: 'Peek at the Italy itinerary',
       footerTagline: 'PLAN THE JOURNEY · KEEP THE MEMORY · © 2025',
+      // Demo content for mini components
+      demo: {
+        espresso: 'Sant\'Eustachio espresso',
+        colosseum: 'Colosseum — skip the line',
+        lunch: 'Lunch in Trastevere',
+        forum: 'Roman Forum at golden hour',
+        dateRome: 'MON · MAY 12 — ROME',
+      },
     },
     // Dashboard
     dashboard: {
@@ -575,6 +583,14 @@ export const translations = {
       openCanvas: 'افتح اللوحة',
       peekItaly: 'ألقِ نظرة على مسار إيطاليا',
       footerTagline: 'خطّط الرحلة · احفظ الذكرى · © 2025',
+      // Demo content for mini components
+      demo: {
+        espresso: 'إسبرسو سانت يوستاكيو',
+        colosseum: 'الكولوسيوم — تخطّ الطابور',
+        lunch: 'غداء في تراستيفيري',
+        forum: 'المنتدى الروماني في الساعة الذهبية',
+        dateRome: 'الاثنين · 12 مايو · روما',
+      },
     },
     // Dashboard
     dashboard: {
