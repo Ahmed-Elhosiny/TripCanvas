@@ -1,43 +1,80 @@
 ```
-# Dependencies
-node_modules/
-
-# Environment
-.env
-.env.local
-.env.*
-
-# Logs
-*.log
-
-# Coverage
-coverage/
-htmlcov/
-.coverage
-
-# IDE
-.vscode/
-.idea/
-*.swp
-*.swo
-*.tmp
-
-# Build artifacts
+# Compiled and build artifacts
+*.pyc
+__pycache__/
+*.o
+*.obj
 dist/
 build/
 target/
 
-# Python cache
-__pycache__/
+# Dependencies
+.venv/
+venv/
+node_modules/
+.julia/
+.zig-cache/
+
+# Logs and temp files
+*.log
+*.tmp
+*.swp
+*.swo
+
+# Environment
+.env
+.env.local
+*.env.*
+
+# Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Coverage
+.coverage
+coverage/
+htmlcov/
+
+# Python specific
 *.pyc
+__pycache__/
 *.pyo
 *.pyd
+.Python
+*.so
 
-# Testing
-.pytest_cache/
+# Build systems
+.gradle/
 .mypy_cache/
+.pytest_cache/
 
-# System
+# OS generated
 .DS_Store
 Thumbs.db
+
+# Compressed files
+*.zip
+*.gz
+*.tar
+*.tgz
+*.bz2
+*.xz
+*.7z
+*.rar
+*.zst
+*.lz4
+*.lzh
+*.cab
+*.arj
+*.rpm
+*.deb
+*.Z
+*.lz
+*.lzo
+*.tar.gz
+*.tar.bz2
+*.tar.xz
+*.tar.zst
 ```
