@@ -9,6 +9,7 @@ import { AppShell } from '../components/AppShell';
 import { Badge, Button, EmptyState, ProgressBar, Reveal, Stat } from '../components/ui';
 import { CreateTripModal } from '../components/modals';
 import { ArrowRightIcon, CalendarIcon, CompassIcon, PinIcon, PlusIcon, WalletIcon } from '../components/icons';
+import { useI18n } from '../i18n/translations';
 
 function RouteLine({ cities }: { cities: Trip['cities'] }) {
   return (
