@@ -82,7 +82,12 @@ body {
   to { stroke-dashoffset: -22; }
 }
 .route-ants {
-  animation: ants 1.6s linear infinite;
+  animation: ants 1.6s linear infinite, fadein 0.8s ease 1.7s both;
+}
+
+@keyframes fadein {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 @keyframes pulsering {
@@ -117,16 +122,6 @@ body {
   50% { transform: translateY(-8px); }
 }
 .floaty { animation: floaty 6s ease-in-out infinite; }
-
-@keyframes shimmer {
-  from { background-position: -400px 0; }
-  to { background-position: 400px 0; }
-}
-.skeleton {
-  background: linear-gradient(90deg, var(--color-mist) 25%, var(--color-bone) 50%, var(--color-mist) 75%);
-  background-size: 800px 100%;
-  animation: shimmer 1.4s linear infinite;
-}
 
 @keyframes toastIn {
   from { opacity: 0; transform: translateY(12px) scale(0.97); }
@@ -165,14 +160,10 @@ body {
   background-size: 22px 22px;
 }
 
-.perforated-y {
-  mask-image: radial-gradient(circle 5px at 0 50%, transparent 98%, black) , radial-gradient(circle 5px at 100% 50%, transparent 98%, black);
-  mask-composite: intersect;
-}
-
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
+    animation-delay: 0ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }

@@ -93,19 +93,19 @@ function MiniBudget() {
       <Donut
         size={120}
         thickness={15}
-        centerTop="€821"
+        centerTop="€820"
         centerBottom="of €1,500"
         data={[
-          { label: 'Stays', value: 530, color: '#2E6B60' },
+          { label: 'Stays', value: 440, color: '#2E6B60' },
           { label: 'Food', value: 83, color: '#E4572E' },
           { label: 'Transport', value: 115, color: '#E8A33D' },
-          { label: 'Activities', value: 163, color: '#7E5A78' },
+          { label: 'Activities', value: 153, color: '#7E5A78' },
         ]}
       />
       <ul className="space-y-1.5">
         {[
-          ['Stays', '€530', '#2E6B60'],
-          ['Activities', '€163', '#7E5A78'],
+          ['Stays', '€440', '#2E6B60'],
+          ['Activities', '€153', '#7E5A78'],
           ['Transport', '€115', '#E8A33D'],
           ['Food', '€83', '#E4572E'],
         ].map(([l, v, c]) => (

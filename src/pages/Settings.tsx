@@ -21,6 +21,9 @@ export default function SettingsPage() {
 
   const saveProfile = () => {
     if (!traveler.trim()) return push('error', 'Name required', 'Every traveler needs a name.');
+    if (email.trim() && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())) {
+      return push('error', 'Email looks off', 'Use the format name@example.com — or leave it blank.');
+    }
     updateSettings({ traveler: traveler.trim(), email: email.trim(), home: home.trim() });
     push('success', 'Profile saved', 'Bon voyage, ' + traveler.trim().split(' ')[0] + '.');
   };

@@ -127,8 +127,8 @@ function italyTrip(): Trip {
   ];
 
   const expenses: Expense[] = [
-    expense('Trastevere apartment · Rome', 'stays', 240, '2025-05-12'),
-    expense('Oltrarno B&B · Florence', 'stays', 170, '2025-05-16'),
+    expense('Trastevere apartment · Rome', 'stays', 180, '2025-05-12'),
+    expense('Oltrarno B&B · Florence', 'stays', 140, '2025-05-16'),
     expense('Cannaregio inn · Venice', 'stays', 120, '2025-05-19'),
     expense('Train Rome → Florence', 'transport', 45, '2025-05-16'),
     expense('Train Florence → Venice', 'transport', 38, '2025-05-19'),
@@ -137,12 +137,12 @@ function italyTrip(): Trip {
     expense('Vatican Museums × 2', 'activities', 25, '2025-05-13'),
     expense('Galleria Borghese', 'activities', 15, '2025-05-14'),
     expense('Uffizi timed entry', 'activities', 25, '2025-05-17'),
-    expense('Gondola ride', 'activities', 80, '2025-05-19', 'Worth every cent'),
+    expense('Gondola ride', 'activities', 70, '2025-05-19', 'Worth every cent'),
     expense('Roscioli dinner', 'food', 45, '2025-05-12'),
     expense('Trattoria lunch', 'food', 24, '2025-05-13'),
     expense('Market picnic', 'food', 14, '2025-05-14'),
     expense("Campo de' Fiori haul", 'shopping', 12, '2025-05-14'),
-    expense('City tax', 'other', 18, '2025-05-16'),
+    expense('City tax', 'other', 17, '2025-05-16'),
   ];
 
   const memories: Memory[] = [
