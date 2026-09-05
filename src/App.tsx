@@ -1,6 +1,7 @@
 import { lazy, Suspense, useEffect } from 'react';
 import { HashRouter, Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import { ToastProvider, TripProvider } from './store/store';
+import { I18nProvider, useDocumentDirection } from './i18n/translations';
 import { Toaster } from './components/ui';
 import { LogoMark } from './components/icons';
 
@@ -26,25 +27,37 @@ function PageLoader() {
   );
 }
 
+function AppContent() {
+  useDocumentDirection();
+  
+  return (
+    <>
+      <HashRouter>
+        <ScrollToTop />
+        <Suspense fallback={<PageLoader />}>
+          <Routes>
+            <Route path="/" element={<Landing />} />
+            <Route path="/trips" element={<Dashboard />} />
+            <Route path="/trip/:tripId" element={<Workspace />} />
+            <Route path="/trip/:tripId/:tab" element={<Workspace />} />
+            <Route path="/settings" element={<SettingsPage />} />
+            <Route path="*" element={<Navigate to="/trips" replace />} />
+          </Routes>
+        </Suspense>
+        <Toaster />
+      </HashRouter>
+    </>
+  );
+}
+
 export default function App() {
   return (
-    <TripProvider>
-      <ToastProvider>
-        <HashRouter>
-          <ScrollToTop />
-          <Suspense fallback={<PageLoader />}>
-            <Routes>
-              <Route path="/" element={<Landing />} />
-              <Route path="/trips" element={<Dashboard />} />
-              <Route path="/trip/:tripId" element={<Workspace />} />
-              <Route path="/trip/:tripId/:tab" element={<Workspace />} />
-              <Route path="/settings" element={<SettingsPage />} />
-              <Route path="*" element={<Navigate to="/trips" replace />} />
-            </Routes>
-          </Suspense>
-          <Toaster />
-        </HashRouter>
-      </ToastProvider>
-    </TripProvider>
+    <I18nProvider>
+      <TripProvider>
+        <ToastProvider>
+          <AppContent />
+        </ToastProvider>
+      </TripProvider>
+    </I18nProvider>
   );
 }
