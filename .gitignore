@@ -1,5 +1,43 @@
+```
+# Dependencies
 node_modules/
-.next/
+
+# Environment
+.env
+.env.local
+.env.*
+
+# Logs
+*.log
+
+# Coverage
+coverage/
+htmlcov/
+.coverage
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*.tmp
+
+# Build artifacts
 dist/
 build/
-*.log
+target/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Testing
+.pytest_cache/
+.mypy_cache/
+
+# System
+.DS_Store
+Thumbs.db
+```

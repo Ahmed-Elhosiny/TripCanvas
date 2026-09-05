@@ -4,6 +4,7 @@
   --font-display: "Fraunces", "Georgia", serif;
   --font-sans: "Outfit", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "Space Mono", ui-monospace, "SFMono-Regular", monospace;
+  --font-arabic: "Noto Sans Arabic", "Segoe UI", Tahoma, sans-serif;
 
   --color-ink: #101b16;
   --color-deep: #0c1712;
@@ -38,6 +39,21 @@ body {
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+}
+
+/* Arabic typography */
+[lang="ar"] {
+  font-family: var(--font-arabic);
+}
+
+[lang="ar"] .font-display {
+  font-family: var(--font-arabic);
+  font-style: normal;
+}
+
+[lang="ar"] .font-mono {
+  font-family: var(--font-arabic);
+  letter-spacing: 0.05em;
 }
 
 ::selection {
@@ -169,4 +185,55 @@ body {
   }
   html { scroll-behavior: auto; }
   .reveal { opacity: 1; transform: none; }
+}
+
+/* RTL Support - Logical Properties */
+[dir="rtl"] {
+  text-align: right;
+}
+
+[dir="rtl"] .text-left {
+  text-align: right;
+}
+
+[dir="rtl"] .text-right {
+  text-align: left;
+}
+
+/* Flip directional margins and paddings using logical properties */
+[dir="rtl"] .ml-auto {
+  margin-inline-start: auto;
+  margin-inline-end: 0;
+}
+
+[dir="rtl"] .mr-auto {
+  margin-inline-start: 0;
+  margin-inline-end: auto;
+}
+
+/* Icon flipping for RTL */
+[dir="rtl"] .flip-rtl {
+  transform: scaleX(-1);
+}
+
+/* Keep certain icons from flipping */
+[dir="rtl"] .no-flip-rtl {
+  transform: none;
+}
+
+/* RTL-specific adjustments for common patterns */
+[dir="rtl"] .gap-2 {
+  gap: 0.5rem;
+}
+
+/* Ensure proper bidirectional text handling */
+[lang="ar"] {
+  direction: rtl;
+  unicode-bidi: embed;
+}
+
+/* Fix for mixed Arabic/Latin content */
+[lang="ar"] .latin-text {
+  direction: ltr;
+  unicode-bidi: isolate;
 }
